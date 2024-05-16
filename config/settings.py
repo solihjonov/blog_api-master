@@ -24,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+# DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['*']
-# HOSTS = os.environ.get('ALLOWED_HOSTS')
-# ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
+# ALLOWED_HOSTS = ['*']
+HOSTS = os.environ.get('ALLOWED_HOSTS')
+ALLOWED_HOSTS = HOSTS.split(' ') if HOSTS else []
 # Application definition
 
 INSTALLED_APPS = [
@@ -101,11 +101,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': "back472_blog",
-        "USER": "back472_blog_user",
-        "PASSWORD": "G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe",
-        "HOST": "postgres://back472_blog_user:G6BdUXUTjruB9deJPY6PGGBCxR4wmJNe@dpg-cno0qkn109ks73ch112g-a.oregon-postgres.render.com/back472_blog",
-        "PORT": 5432
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
 
